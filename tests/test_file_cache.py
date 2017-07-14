@@ -44,11 +44,11 @@ class QdbFileCacheTester(TestCase):
         db.cache_file('file', contents=contents)
 
         # Check the whole 'file'.
-        self.assertEquals(db.get_file('file'), contents[:-1])  # drop '\n'
+        self.assertEqual(db.get_file('file'), contents[:-1])  # drop '\n'
 
         for n in range(1, 5):
             # Check all the lines.
-            self.assertEquals('line %d' % n, db.get_line('file', n))
+            self.assertEqual('line %d' % n, db.get_line('file', n))
 
     def test_file_cache_from_disk(self):
         """
@@ -66,10 +66,10 @@ class QdbFileCacheTester(TestCase):
             contents = f.read()[:-1]  # Drop the last newline.
 
             # Assert that querying the entire file works.
-            self.assertEquals(db.get_file(filename), contents)
+            self.assertEqual(db.get_file(filename), contents)
 
             for n, line in zip(count(start=1), contents.splitlines()):
                 # Iterate over all the lines of the file, asserting that we
                 # have saved them correctly. This also asserts that the line
                 # indexing is working as intended.
-                self.assertEquals(db.get_line(filename, n), line)
+                self.assertEqual(db.get_line(filename, n), line)

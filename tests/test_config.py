@@ -112,5 +112,5 @@ class QdbConfigTester(TestCase):
             # Assert athat extra_arg is NOT a valid option.
             extra_arg += '_'
 
-        with self.assertRaisesRegexp(TypeError, extra_arg):
+        with self.assertRaisesRegex(TypeError, extra_arg):
             QdbConfig.get_config({extra_arg: None})

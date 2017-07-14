@@ -11,7 +11,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
-from __future__ import print_function
+
 
 from types import MethodType
 
@@ -54,9 +54,9 @@ except ImportError:
 
 if PY2:
     try:
-        from cStringIO import StringIO
+        from io import StringIO
     except ImportError:
-        from StringIO import StringIO
+        from io import StringIO
 
     from contextlib2 import ExitStack
     import itertools

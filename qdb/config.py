@@ -143,7 +143,7 @@ class QdbConfig(namedtuple('QdbConfig', DEFAULT_OPTIONS)):
             for use, filename in chain(
                 ((use_profile, cls.get_profile()),
                  (use_local, cls.get_local())),
-                zip(repeat(True), files),
+                list(zip(repeat(True), files)),
             )
             if use
         )

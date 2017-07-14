@@ -123,8 +123,8 @@ class ServerTester(with_metaclass(Py2TestMeta, TestCase)):
 
             auth_failed_dict = fmt_err_msg('auth', 'Authentication failed')
 
-            self.assertEquals(auth_failed_event, auth_failed_dict)
-            self.assertEquals(disable_event['e'], 'disable')
+            self.assertEqual(auth_failed_event, auth_failed_dict)
+            self.assertEqual(disable_event['e'], 'disable')
             self.assertFalse('test' in server.session_store)
 
     def test_client_auth_timeout(self):
@@ -149,8 +149,8 @@ class ServerTester(with_metaclass(Py2TestMeta, TestCase)):
                 auth_failed_msg = ws.recv()
                 disable_msg = ws.recv()
 
-            self.assertEquals(auth_failed_msg, json.dumps(auth_failed_dict))
-            self.assertEquals(disable_msg, json.dumps(disable_dict))
+            self.assertEqual(auth_failed_msg, json.dumps(auth_failed_dict))
+            self.assertEqual(disable_msg, json.dumps(disable_dict))
             self.assertFalse('test' in server.session_store)
 
     def test_bad_auth_tracer(self):

@@ -72,9 +72,9 @@ def main():
         cmd_manager=RemoteCommandManager(),
     )
     mutable_object = {}
-    print 'Hello world!'
+    print('Hello world!')
     f()
-    print mutable_object
+    print(mutable_object)
 
 
 if __name__ == '__main__':

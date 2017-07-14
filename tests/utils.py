@@ -23,7 +23,7 @@ from qdb.compat import PY3
 if PY3:
     from queue import Queue, Empty
 else:
-    from Queue import Queue, Empty
+    from queue import Queue, Empty
 
 
 class QueueCommandManager(CommandManager):

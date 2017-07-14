@@ -12,7 +12,7 @@ def main():
                 count += 1
                 os.remove(os.path.join(name, file))
 
-    print "Deleted %s files" % count
+    print("Deleted %s files" % count)
 
 
 if __name__ == "__main__":

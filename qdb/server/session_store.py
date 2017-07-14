@@ -182,7 +182,7 @@ class SessionStore(object):
             passed any messages in over SESSION_INACTIVITY_TIMEOUT minutes.
             """
             now = time()
-            for uuid in self._sessions.keys():
+            for uuid in list(self._sessions.keys()):
                 last_message = self._sessions[uuid].timestamp
                 if (now - last_message) / 60 > self.inactivity_timeout:
                     log.info('Session %s was marked inactive, killing' % uuid)
@@ -411,5 +411,5 @@ class SessionStore(object):
         """
         Slaughters all the sessions that are in progress.
         """
-        for uuid in self._sessions.keys():
+        for uuid in list(self._sessions.keys()):
             self.slaughter(uuid, mode)

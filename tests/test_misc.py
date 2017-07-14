@@ -97,7 +97,7 @@ class DefaultFnTester(TestCase):
             with self.assertRaises(type(result)):
                 default_eval_fn(code, sys._getframe())
         else:
-            self.assertEquals(result, default_eval_fn(code, sys._getframe()))
+            self.assertEqual(result, default_eval_fn(code, sys._getframe()))
 
     @parameterized.expand([
         (KeyError('key'), "KeyError: 'key'"),
@@ -105,7 +105,7 @@ class DefaultFnTester(TestCase):
         (TestException('e'), 'TestException: result = e')
     ])
     def test_default_exception_serializer(self, exception, result):
-        self.assertEquals(
+        self.assertEqual(
             result,
             default_exception_serializer(exception),
         )
