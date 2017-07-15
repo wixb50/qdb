@@ -285,7 +285,7 @@ class SessionStore(object):
         send_to_tracer method.
         """
         sck.sendall(pack('>i', len(msg)))
-        sck.sendall(msg)
+        sck.sendall(msg.encode('utf-8'))
 
     def is_local(self, uuid):
         """
