@@ -672,13 +672,13 @@ def get_events_from_socket(sck):
                 raise QdbReceivedInvalidData(resp)
 
             rlen = unpack('>i', resp)[0]
-            resp = bytearray(rlen)
-            sck.settimeout(1)
-            if sck.recv_into(resp, rlen) != rlen:
-                raise QdbReceivedInvalidData(resp)
+            resp = memoryview(bytearray(rlen))
+            next_offset = 0
+            while rlen - next_offset > 0:
+                next_offset += sck.recv_into(resp[next_offset:], rlen - next_offset)
 
             if PY3:
-                resp = resp.decode('utf-8')
+                resp = resp.tobytes().decode('utf-8')
             else:
                 resp = bytes(resp)
 
